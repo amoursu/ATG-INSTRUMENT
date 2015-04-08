@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
+	<classpathentry exported="true" kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry exported="true" kind="lib" path="lib/gnujaxp.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/iText-2.1.5.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/jcommon-1.0.17.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/jfreechart-1.0.14-experimental.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/jfreechart-1.0.14-swt.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/jfreechart-1.0.14.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/junit.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/servlet.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/swtgraphics2d.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/org.eclipse.draw2d_3.8.1.201208200205.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/org.eclipse.zest.core_1.3.0.201208200205.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/org.eclipse.zest.layouts_1.1.0.201208200205.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

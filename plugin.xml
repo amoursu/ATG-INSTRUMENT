@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension point="org.eclipse.ui.popupMenus">
+      	<objectContribution
+            adaptable="true"
+            id="cn.nju.seg.atg.contribution1"
+            objectClass="org.eclipse.cdt.core.model.IFunctionDeclaration">
+         <menu
+               icon="icons/java.ico"
+               id="cn.nju.seg.atg.menu1"
+               label="cn.nju.seg.atg"
+               path="additions">
+            <separator name="group1">
+            </separator>
+         </menu>
+         <action
+               class="cn.nju.seg.atg.action.GenerateAction"
+               enablesFor="1"
+               icon="icons/coffee.ico"
+               id="cn.nju.seg.atg.cfgId"
+               label="Show CFG"
+               menubarPath="cn.nju.seg.atg.menu1/group1">
+         </action>
+         <action
+               class="cn.nju.seg.atg.action.GenerateAction"
+               enablesFor="1"
+               icon="icons/coffee.ico"
+               id="cn.nju.seg.atg.instrument"
+               label="INSTUMENT"
+               menubarPath="cn.nju.seg.atg.menu1/group1">
+         </action>
+         
+      </objectContribution>
+   </extension>
+   
+<?action on a C/C++ source file ?>
+   
+   <extension
+         point="org.eclipse.help.contexts">
+      <contexts
+            file="contexts.xml">
+      </contexts>
+   </extension>
+   <extension
+         point="org.eclipse.debug.core.launchConfigurationTypes">
+      <launchConfigurationType
+            id="cn.nju.seg.atg.launchConfigurationType1"
+            name="Example Configuration Type">
+      </launchConfigurationType>
+   </extension>
+   
+
+</plugin>

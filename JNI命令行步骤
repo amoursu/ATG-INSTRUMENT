@@ -1,0 +1,59 @@
+1. 在工程包cn.nju.seg.chengxin下新建Hello.java
+	package cn.nju.seg.chengxin;
+	public class Hello
+	{
+		static
+		{
+			try
+			{
+				// 加载本地方法所在的链接库名
+				System.loadLibrary("hello");
+			}
+			catch (UnsatisfiedLinkError e)
+			{
+				System.err.println("Cannot load hello library:\n"+e.toString());
+			}
+		}
+		
+		public Hello()
+		{
+		}
+		
+		// 声明本地方法
+		public native void SayHello(String strName);
+	}
+
+2. 到工程bin目录下执行如下命令
+	~$ javah -jni cn.nju.seg.chengxin.Hello
+
+3. 在桌面新建Hello.cpp
+	#include "cn_nju_seg_chengxin_Hello.h"
+	#include <stdio.h>
+	// 与Hello.h中函数声明相同
+	JNIEXPORT void JNICALL Java_cn_nju_seg_chengxin_Hello_SayHello (JNIEnv *env, jobject arg, jstring instring)
+	{
+		// 从instring字符串取得指向字符串UTF编码的指针
+		const jbyte *str = (const jbyte *)env->GetStringUTFChars(instring, JNI_FALSE);
+		printf("Hello, %s\n",str);
+		// 通知虚拟机本地代码不再需要通过str访问Java字符串
+		env->ReleaseStringUTFChars(instring, (const char *)str);
+		return;
+	}
+
+4. 拷贝jni.h和jni_md.h到桌面
+	~$ cp /usr/lib/jvm/java-7-openjdk-i386/include/jni.h jni.h
+	~$ cp /usr/lib/jvm/java-7-openjdk-i386/include/linux/jni_md.h jni_md.h
+
+5. 编译Hello.cpp生成Hello.o
+	~$ g++ -I/user/lib/jvm/java-7-openjdk-i386/include -I/user/lib/jvm/java-7-openjdk-i386/incldue/linux -fPIC -shared -o libhello.so Hello.cpp
+	若编译不通过，尝试以下命令：
+	（包含部分C／C＋＋头文件）
+	~$ g++ -I/user/lib/jvm/java-7-openjdk-i386/include -I/user/lib/jvm/java-7-openjdk-i386/incldue/linux -I/user/include -I/user/include/c++/4.7 -fPIC -shared -o libhello.so Hello.cpp
+	或者
+	（包含全部C／C＋＋头文件）
+	~$ g++ -I/user/lib/jvm/java-7-openjdk-i386/include -I/user/lib/jvm/java-7-openjdk-i386/incldue/linux -I/user/include -I/user/include/c++/4.7 -I/user/include/c++/4.7/backword -I/user/include/c++/4.7/i686-linux-gnu -I/user/include/i386-linux-gnu -I/user/lib/gcc/i686-linux-gnu/4.7/include -I/user/lib/gcc/i686-linux-gnu/4.7/include-fixed -fPIC -shared -o libhello.so Hello.cpp
+	%如果提示找不到jni.h，则修改cn_nju_seg_chengxin_Hello.h中#incldue <jni.h>为#include "jni.h"
+
+6. 拷贝libhello.so到/user/lib/目录下
+	~$ sudo cp libhello.so /usr/lib/
+

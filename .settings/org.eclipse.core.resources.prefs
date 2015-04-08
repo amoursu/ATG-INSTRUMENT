@@ -1,0 +1,9 @@
+eclipse.preferences.version=1
+encoding//src/cn/nju/seg/atg/parse/AbstractAST.java=UTF-8
+encoding//src/cn/nju/seg/atg/parse/Builder.java=UTF-8
+encoding//src/cn/nju/seg/atg/parse/ShowCFG.java=UTF-8
+encoding//src/cn/nju/seg/atg/visitor/CFGNode.java=UTF-8
+encoding//src/cn/nju/seg/atg/visitor/CompositeExpressionNode.java=UTF-8
+encoding//src/cn/nju/seg/atg/visitor/ForStatementVisitor.java=UTF-8
+encoding//src/cn/nju/seg/atg/visitor/FunctionVisitor.java=UTF-8
+encoding//src/cn/nju/seg/atg/visitor/IfStatementVisitor.java=UTF-8
